@@ -1,0 +1,75 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Products",
+    "description": "This api is to check endpoints about products",
+    "contact": {
+      "email": "taniamaraiza@hotmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/v1",
+      "description": "API for tests"
+    }
+  ],
+  "paths": {
+    "/products": {
+      "post": {
+        "summary": "Create Products",
+        "description": "This route is responsible to create products",
+        "tags": ["Products"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "name": "Cel Samsung A35",
+                    "description": "Item novo, bonito, e tecnologico",
+                    "color": "Preto",
+                    "weight": "180g",
+                    "type": "Eletronico",
+                    "price": "1800"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          }
+        }
+      }
+    } 
+  }
+
+}
