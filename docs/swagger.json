@@ -10,12 +10,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/v1",
+      "url": "http://localhost:3000",
       "description": "API for tests"
     }
   ],
   "paths": {
-    "/products": {
+    "/product": {
       "post": {
         "summary": "Create Products",
         "description": "This route is responsible to create products",
@@ -36,6 +36,157 @@
                     "type": "Eletronico",
                     "price": "1800"
                   }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "This product already exist"
+          },
+          "200": {
+            "description": "Created with success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product:name?": {
+      "get": {
+        "description": "Search product by name",
+        "summary": "I wish search a product by name on API",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Product name to search",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "This product already exist"
+          },
+          "200": {
+            "description": "Created with success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "description": "Search product by name",
+        "summary": "I wish search all product on API",
+        "tags": ["Products"],
+        "responses": {
+          "400": {
+            "description": "This product already exist"
+          },
+          "200": {
+            "description": "Created with success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/{id}": {
+      "put": {
+        "description": "Update product by id",
+        "summary": "I wish update a product by id on API",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product id to update",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "name": "Cel Samsung S23",
+                    "description": "Item novo, bonito, e tecnologico",
+                    "color": "Preto",
+                    "weight": "180g",
+                    "type": "Eletronico",
+                    "price": "3000"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "this product does not exist"
+          },
+          "200": {
+            "description": "Updated with success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete product by id",
+        "summary": "I wish delete a product by id on API",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product id to delete",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "this product does not exist"
+          },
+          "200": {
+            "description": "Delete with success!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Product"
                 }
               }
             }
@@ -69,7 +220,6 @@
           }
         }
       }
-    } 
+    }
   }
-
 }

@@ -118,7 +118,7 @@ class ProductController {
             if (productExists) {
                 return response.status(400).json({
                     error: "Ooops",
-                    message: "This prodcut already exist",
+                    message: "This product already exist",
                 });
             }
 

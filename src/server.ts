@@ -7,9 +7,7 @@ import "dotenv/config";
 
 const app = express();
 
-// app.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-// mongoose.connect("mongodb://localhost/firstapi");
+app.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 mongoose.connect(
   `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@api-products-cluster.gtxmtk1.mongodb.net/?retryWrites=true&w=majority&appName=api-products-cluster`
